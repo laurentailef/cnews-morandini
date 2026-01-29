@@ -41,6 +41,35 @@
       object-fit: contain;
       display: block;
     }
+
+    /* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border: 3px solid #444;
+  border-radius: 6px;
+  background: #111;
+}
+
+.lightbox .close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 36px;
+  color: white;
+  cursor: pointer;
+}
+
   </style>
 </head>
 
@@ -68,5 +97,31 @@
     <div class="item"><img src="morandini18.png" alt=""></div>
     <div class="item"><img src="morandini19.png" alt=""></div>
   </div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+<script>
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+
+  document.querySelectorAll(".gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    });
+  });
+
+  function closeLightbox(e) {
+    if (e.target === lightbox || e.target.classList.contains("close")) {
+      lightbox.style.display = "none";
+      lightboxImg.src = "";
+    
+  }
+</script>
+
+  
 </body>
 </html>
