@@ -68,6 +68,19 @@
   font-size: 36px;
   color: white;
   cursor: pointer;
+
+
+
+  /* Curseur main + effet survol */
+.gallery .item {
+  cursor: pointer;              /* main */
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+.gallery .item:hover {
+  border-color: #ddd;           /* couleur du cadre au survol */
+  transform: translateY(-2px);  /* petit effet optionnel */
+
 }
 
   </style>
